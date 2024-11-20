@@ -1,0 +1,15 @@
+<h1>Emprestar Livro</h1>
+<hr>
+<p style="font-size: 20px; font-weight: 500;">Selecione o usuário para quem deseja emprestar o livro "<%= @book.title %>":</p>
+
+<%= form_with url: borrow_book_path(@book), method: :patch, local: true do |form| %>
+  <div>
+    <%= form.label :user_id, 'Usuário', "class": 'form-label' %>
+    <br>
+    <%= form.collection_select :user_id, User.all, :id, :name, prompt: 'Selecione um usuário' %>
+  </div>
+  <br>
+  <div>
+    <%= form.submit 'Emprestar', "class": 'btn btn-primary' %>
+  </div>
+<% end %>

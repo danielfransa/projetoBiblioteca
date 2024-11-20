@@ -1,0 +1,23 @@
+<%= form_with model: @book, local: true do |form| %>
+   <hr>
+  <div class="mb-3">
+    <%= form.label :title, 'Título', "class": 'form-label' %>
+    <%= form.text_field :title, required: true, "class": 'form-control', "style": 'width: 400px' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :author, 'Autor', "class": 'form-label' %>
+    <%= form.text_field :author, required: true, "class": 'form-control', "style": 'width: 400px' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :status, 'Status', "class": 'form-label' %>
+    <br>
+    <%= form.select :status, [['Disponível', 'disponível'], ['Emprestado', 'emprestado']] %>
+  </div>
+
+  <br>
+  <div>
+    <%= form.submit action_name == 'new' ? 'Cadastrar' : 'Atualizar' %>
+  </div>
+<% end %>

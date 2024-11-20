@@ -1,0 +1,16 @@
+<%= form_with model: @user, local: true do |form| %>
+  <hr>
+  <div class="mb-3">
+    <%= form.label :name, 'Nome', "class": 'form-label' %>
+    <%= form.text_field :name, required: true, "class": 'form-control', "style": 'width: 400px' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :email, 'Email', "class": 'form-label' %>
+    <%= form.email_field :email, required: true, "class": 'form-control', "style": 'width: 400px' %>
+  </div>
+  <br>
+  <div>
+    <%= form.submit action_name == 'new' ? 'Cadastrar' : 'Atualizar', "class": 'btn btn-primary' %>
+  </div>
+<% end %>
