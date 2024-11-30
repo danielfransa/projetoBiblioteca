@@ -3,10 +3,6 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
-  def show
-    @book = Book.find(params[:id])
-  end
-
   def new
     @book = Book.new
   end
@@ -16,7 +12,8 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to books_path, notice: "Livro cadastrado com sucesso!"
     else
-      render :new, alert: "Erro ao cadastrar livro."
+      flash[:alert] = "Erro ao cadastrar livro."
+      render :new
     end
   end
 
@@ -29,7 +26,8 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       redirect_to books_path, notice: "Livro atualizado com sucesso!"
     else
-      render :edit, alert: "Erro ao atualizar livro."
+      flash[:alert] = "Erro ao atualizar livro."
+      render :edit
     end
   end
 

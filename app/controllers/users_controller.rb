@@ -3,11 +3,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
-    @user = User.find(params[:id])
-    @books = @user.books
-  end
-
   def new
     @user = User.new
   end
@@ -17,7 +12,8 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to users_path, notice: "Usuário cadastrado com sucesso!"
     else
-      render :new, alert: "Erro ao cadastrar usuário."
+      flash[:alert] = "Erro ao cadastrar usuário."
+      render :new
     end
   end
 
@@ -30,7 +26,8 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to users_path, notice: "Usuário atualizado com sucesso!"
     else
-      render :edit, alert: "Erro ao atualizar usuário."
+      flash[:alert] =  "Erro ao atualizar usuário."
+      render :edit
     end
   end
 
